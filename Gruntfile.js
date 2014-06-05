@@ -1,6 +1,16 @@
 module.exports = function(grunt){
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
+        connect:{
+            server:{
+                options:{
+                    hostname: 'localhost',
+                    port:9000,
+                    keepalive:true,
+                    open:true
+                }
+            }
+        },
         jshint:{
             files:['Gruntfile.js','App/*.js']    
         },
@@ -15,7 +25,10 @@ module.exports = function(grunt){
 
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-karma');
+    grunt.loadNpmTasks('grunt-contrib-connect');
 
-    grunt.registerTask('default',['jshint','karma']);
-    
+    grunt.registerTask('karma',['karma']);
+    grunt.registerTask('server',['connect:server']);
+    grunt.registerTask('default',['jshint','connect:server']);
+
 };
