@@ -7,7 +7,8 @@ module.exports = function(grunt){
                     hostname: 'localhost',
                     port:9000,
                     keepalive:true,
-                    open:true
+                    open:true,
+                    base:'app'
                 }
             }
         },
